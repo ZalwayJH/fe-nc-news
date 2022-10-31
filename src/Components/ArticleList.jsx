@@ -16,7 +16,7 @@ const ArticleList = () => {
 
   return (
     <main>
-      <h2>Articles</h2>
+      <h2 className={"ArticlesHeader"}>Articles</h2>
       <ul>
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} articles={article} />;

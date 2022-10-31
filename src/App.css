@@ -1,5 +1,12 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: min-content auto auto;
+  grid-template-areas:
+    "header"
+    "nav"
+    "content";
 }
 
 .App-logo {
@@ -10,6 +17,15 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .App {
+    grid-template-columns: 25% 75%;
+    grid-template-rows: min-content auto;
+    grid-template-areas:
+      "header header"
+      "nav content";
   }
 }
 
@@ -37,12 +53,61 @@
   }
 }
 
+.Welcome {
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+
+.ArticlesHeader {
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+}
+
 .ArticleItems {
+  position: relative;
+  width: 60%;
   list-style-type: none;
   list-style-position: inside;
   border: 1px solid black;
-  margin: 50px auto;
-  display: grid;
-  min-width: 80%;
+  margin: 10px auto;
+  padding: 0px;
   height: auto;
+}
+
+.articleBody {
+  position: relative;
+  width: 50%;
+  border: 1px solid black;
+  height: auto;
+  margin: 0px auto;
+  padding: 10px;
+}
+
+.voteCounter {
+  position: relative;
+  right: 40%;
+  top: 300%;
+}
+
+.Author {
+  position: relative;
+  bottom: 50%;
+}
+
+.CommentCount {
+  position: relative;
+  bottom: 80%;
+}
+
+.Topics {
+  position: relative;
+}
+
+.Date {
+  position: relative;
+  left: 30%;
 }
