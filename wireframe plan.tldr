@@ -100,8 +100,8 @@
             "parentId": "page",
             "childIndex": 4,
             "point": [
-              542.63,
-              565.65
+              274.75,
+              339.32
             ],
             "size": [
               106.49,
@@ -272,8 +272,8 @@
             "parentId": "page",
             "childIndex": 11,
             "point": [
-              558.11,
-              570.08
+              290.23,
+              343.75
             ],
             "rotation": 0,
             "text": "Topics",
@@ -294,8 +294,8 @@
             "parentId": "page",
             "childIndex": 12,
             "point": [
-              525.75,
-              464.04
+              533.77,
+              507
             ],
             "size": [
               107.18,
@@ -322,8 +322,8 @@
             "parentId": "page",
             "childIndex": 13,
             "point": [
-              525.15,
-              474.38
+              534.24,
+              514.1
             ],
             "rotation": 0,
             "text": "Article List",
@@ -738,11 +738,11 @@
             "parentId": "page",
             "childIndex": 29,
             "point": [
-              581.95,
-              519.38
+              589.65,
+              587.47
             ],
             "rotation": 0,
-            "bend": 0,
+            "bend": 0.000014998290751306535,
             "handles": {
               "start": {
                 "id": "start",
@@ -751,15 +751,14 @@
                   0,
                   0
                 ],
-                "canBind": true,
-                "bindingId": "140fd721-d0c7-4b5e-2be2-67310d93d714"
+                "canBind": true
               },
               "end": {
                 "id": "end",
                 "index": 1,
                 "point": [
-                  4.14,
-                  44
+                  4.58,
+                  55.07
                 ],
                 "canBind": true
               },
@@ -767,8 +766,8 @@
                 "id": "bend",
                 "index": 2,
                 "point": [
-                  2.07,
-                  22
+                  2.29,
+                  27.54
                 ]
               }
             },
@@ -795,28 +794,28 @@
             "parentId": "page",
             "childIndex": 30,
             "point": [
-              595.96,
-              608.9
+              344.36,
+              284.04
             ],
             "rotation": 0,
-            "bend": -0.00032322501165834867,
+            "bend": 0.00011625418786536015,
             "handles": {
               "start": {
                 "id": "start",
                 "index": 0,
                 "point": [
-                  0,
+                  44.66,
                   0
                 ],
                 "canBind": true,
-                "bindingId": "7f718241-b1bc-4825-3fce-b2b4147b5d6b"
+                "bindingId": "613dc3aa-c7c3-4170-33fd-f9085701244e"
               },
               "end": {
                 "id": "end",
                 "index": 1,
                 "point": [
-                  0.17,
-                  40
+                  0,
+                  51.52
                 ],
                 "canBind": true
               },
@@ -824,8 +823,8 @@
                 "id": "bend",
                 "index": 2,
                 "point": [
-                  0.09,
-                  20
+                  22.33,
+                  25.76
                 ]
               }
             },
@@ -1393,8 +1392,8 @@
             "parentId": "page",
             "childIndex": 48,
             "point": [
-              351.22,
-              462.54
+              348.66,
+              460.78
             ],
             "size": [
               90.52,
@@ -1478,7 +1477,7 @@
             "parentId": "page",
             "childIndex": 50,
             "point": [
-              572.36,
+              573.1,
               421.73
             ],
             "rotation": 0,
@@ -1498,8 +1497,8 @@
                 "id": "end",
                 "index": 1,
                 "point": [
-                  3.97,
-                  39.8
+                  8.75,
+                  69.27
                 ],
                 "canBind": true,
                 "bindingId": "4ee508dd-dfdb-46e5-37ec-c8b71334d560"
@@ -1508,8 +1507,8 @@
                 "id": "bend",
                 "index": 2,
                 "point": [
-                  1.99,
-                  19.9
+                  4.38,
+                  34.64
                 ]
               }
             },
@@ -1536,7 +1535,7 @@
             "parentId": "page",
             "childIndex": 51,
             "point": [
-              445.79,
+              445.08,
               421.83
             ],
             "rotation": 0,
@@ -1546,7 +1545,7 @@
                 "id": "start",
                 "index": 0,
                 "point": [
-                  30.98,
+                  31.69,
                   0
                 ],
                 "canBind": true
@@ -1556,7 +1555,7 @@
                 "index": 1,
                 "point": [
                   0,
-                  25.3
+                  24.41
                 ],
                 "canBind": true,
                 "bindingId": "eb0e1894-87a8-4657-1b48-0b7ae705e0fb"
@@ -1565,8 +1564,8 @@
                 "id": "bend",
                 "index": 2,
                 "point": [
-                  15.49,
-                  12.65
+                  15.85,
+                  12.21
                 ]
               }
             },
@@ -1839,18 +1838,6 @@
             ],
             "distance": 8
           },
-          "140fd721-d0c7-4b5e-2be2-67310d93d714": {
-            "id": "140fd721-d0c7-4b5e-2be2-67310d93d714",
-            "type": "arrow",
-            "fromId": "e86890f6-d788-48c0-1f82-9729f2517631",
-            "toId": "cc513803-5eca-484e-07b1-a38beed8a809",
-            "handleId": "start",
-            "point": [
-              0.5,
-              0.5
-            ],
-            "distance": 16
-          },
           "4bf1871a-90e6-4875-3336-7d353b75d343": {
             "id": "4bf1871a-90e6-4875-3336-7d353b75d343",
             "type": "arrow",
@@ -1971,18 +1958,6 @@
             ],
             "distance": 16
           },
-          "7f718241-b1bc-4825-3fce-b2b4147b5d6b": {
-            "id": "7f718241-b1bc-4825-3fce-b2b4147b5d6b",
-            "type": "arrow",
-            "fromId": "75c56692-021c-4c89-02f0-f80d4abd912f",
-            "toId": "70e0913b-64f2-449e-37ac-e976c4358841",
-            "handleId": "start",
-            "point": [
-              0.5,
-              0.5
-            ],
-            "distance": 16
-          },
           "eb0e1894-87a8-4657-1b48-0b7ae705e0fb": {
             "id": "eb0e1894-87a8-4657-1b48-0b7ae705e0fb",
             "type": "arrow",
@@ -2030,6 +2005,18 @@
               0.56
             ],
             "distance": 16
+          },
+          "613dc3aa-c7c3-4170-33fd-f9085701244e": {
+            "id": "613dc3aa-c7c3-4170-33fd-f9085701244e",
+            "type": "arrow",
+            "fromId": "75c56692-021c-4c89-02f0-f80d4abd912f",
+            "toId": "5bc0f108-4ce3-49a4-3060-f51e7fccf162",
+            "handleId": "start",
+            "point": [
+              0.4,
+              0.45
+            ],
+            "distance": 8
           }
         }
       }

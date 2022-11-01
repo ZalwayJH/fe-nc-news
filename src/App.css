@@ -69,18 +69,16 @@
 
 .ArticleItems {
   position: relative;
-  width: 60%;
   list-style-type: none;
   list-style-position: inside;
   border: 1px solid black;
   margin: 10px auto;
   padding: 0px;
-  height: auto;
 }
 
 .articleBody {
   position: relative;
-  width: 50%;
+  width: 90%;
   border: 1px solid black;
   height: auto;
   margin: 0px auto;
@@ -109,5 +107,5 @@
 
 .Date {
   position: relative;
-  left: 30%;
+  right: 10%;
 }
