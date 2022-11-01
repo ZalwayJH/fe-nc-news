@@ -1,18 +1,29 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { React, useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
+import { useParams } from "react-router-dom";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
+  const { topic } = useParams();
 
   useEffect(() => {
-    fetch(`https://project-northcoders-nc-news.herokuapp.com/api/articles`)
+    let selectedTopic = "";
+    if (topic) {
+      selectedTopic = `?topic=${topic}`;
+    }
+    if (topic === "Home") {
+      selectedTopic = "";
+    }
+
+    fetch(
+      `https://project-northcoders-nc-news.herokuapp.com/api/articles${selectedTopic}`
+    )
       .then((res) => res.json())
       .then((data) => {
         const allArticles = data;
         setArticles(allArticles);
       });
-  }, []);
+  }, [topic]);
 
   return (
     <main>

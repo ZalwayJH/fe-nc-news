@@ -1,7 +1,7 @@
 const ArticleCard = ({ articles }) => {
   const {
     body,
-    article_id,
+    // article_id,
     author,
     comment_count,
     created_at,
@@ -17,7 +17,6 @@ const ArticleCard = ({ articles }) => {
         <h3 className="Author">By {author}</h3>
         <p className="articleBody">{body}</p>
         <h4 className="voteCounter">Votes: {votes}</h4>
-
         <h4 className="CommentCount"> View comments: {comment_count}</h4>
         <ul>
           <h4 className="Topics">Topic:</h4>
