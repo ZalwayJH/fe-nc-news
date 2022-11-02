@@ -1,5 +1,5 @@
 const Header = () => {
-  return <h1 className={"Welcome"}>Welcome to NC News!</h1>;
+  return <header className={"Welcome"}>Welcome to NC News!</header>;
 };
 
 export default Header;
