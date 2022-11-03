@@ -21,10 +21,10 @@ const Topics = () => {
   });
   allTopics.unshift("Home");
   return (
-    <ul className="scrollMenu" id="topicList">
+    <ul>
       {allTopics.map((category, index) => {
         return (
-          <Link key={index} to={`/${category}`}>
+          <Link className="scrollMenu" key={index} to={`/${category}`}>
             <li key={index}>{category}</li>
           </Link>
         );

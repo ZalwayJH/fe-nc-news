@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Votes from "./Votes";
 
 const FocusedArticle = () => {
   const { articleId } = useParams();
@@ -8,16 +9,8 @@ const FocusedArticle = () => {
   const [article, setArticleById] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const {
-    body,
-    article_id,
-    author,
-    comment_count,
-    created_at,
-    title,
-    topic,
-    votes,
-  } = article;
+  const { body, article_id, author, comment_count, created_at, title, topic } =
+    article;
 
   useEffect(() => {
     fetch(
@@ -35,13 +28,13 @@ const FocusedArticle = () => {
   return (
     <article>
       <li loading="lazy" className={"ArticleItems"}>
-        <h3>{isLoading ? "Loading.." : <h2 key={article_id}>{title}</h2>}</h3>
+        <>{isLoading ? "Loading.." : <h2 key={article_id}>{title}</h2>}</>
 
         <h3 className="Author">By {author}</h3>
         <section className="BodyBackground">
           <p className="articleBody">{body}</p>
         </section>
-        <h4 className="voteCounter">Votes: {votes}</h4>
+        <Votes article={article} />
         <h4 className="CommentCount"> View comments: {comment_count}</h4>
         <ul>
           <h4 className="Topics">Topic:</h4>
