@@ -127,6 +127,19 @@
   background-color: #aab7bb;
 }
 
+.scrollMenu {
+  list-style-type: none;
+  list-style-position: inside;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.scrollMenu:visited {
+  list-style-type: none;
+  list-style-position: inside;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #161920;
+}
+
 .articleBody {
   overflow: hidden;
   display: -webkit-box;
@@ -146,7 +159,8 @@
 
 .Author {
   position: relative;
-  bottom: 50%;
+  bottom: 10px;
+  margin: 0;
 }
 
 .CommentCount {
@@ -171,12 +185,12 @@
 }
 
 .Date {
+  margin: 0px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 0;
   -webkit-box-orient: horizontal;
   text-overflow: ellipsis;
   position: relative;
-  left: 20%;
-  top: 18px;
+  left: 25%;
 }
