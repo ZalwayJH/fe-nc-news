@@ -30,7 +30,7 @@ const ArticleList = () => {
       <h1 className={"ArticlesHeader"}>Articles.</h1>
       <ul>
         {articles.map((article) => {
-          return <ArticleCard key={article.article_id} articles={article} />;
+          return <ArticleCard key={article.article_id} article={article} />;
         })}
       </ul>
     </main>

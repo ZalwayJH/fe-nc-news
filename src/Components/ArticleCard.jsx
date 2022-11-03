@@ -1,17 +1,10 @@
 import { Link } from "react-router-dom";
 import FocusedArticle from "./FocusedArticle";
+import Votes from "./Votes";
 
-const ArticleCard = ({ articles }) => {
-  const {
-    body,
-    article_id,
-    author,
-    comment_count,
-    created_at,
-    title,
-    topic,
-    votes,
-  } = articles;
+const ArticleCard = ({ article }) => {
+  const { body, article_id, author, comment_count, created_at, title, topic } =
+    article;
 
   return (
     <article>
@@ -19,17 +12,16 @@ const ArticleCard = ({ articles }) => {
         <Link
           className="ArticleTitleLink"
           to={`/article/${article_id}`}
-          element={<FocusedArticle singleArticle={articles} />}
+          element={<FocusedArticle />}
         >
           <h2 key={article_id}>{title}</h2>
         </Link>
 
         <h3 className="Author">By {author}</h3>
         <section className="BodyBackground">
-          {" "}
           <p className="articleBody">{body}</p>
         </section>
-        <p className="voteCounter">Votes: {votes}</p>
+        <Votes article={article} />
         <h4 className="CommentCount"> View comments: {comment_count}</h4>
         <ul>
           <h4 className="Topics">Topic:</h4>
