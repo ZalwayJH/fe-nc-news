@@ -22,7 +22,13 @@ const ArticleCard = ({ article }) => {
           <p className="articleBody">{body}</p>
         </section>
         <Votes article={article} />
-        <h4 className="CommentCount"> View comments: {comment_count}</h4>
+        <Link
+          className="scrollMenu"
+          to={`/article/${article_id}`}
+          element={<FocusedArticle />}
+        >
+          <h4 className="CommentCount"> View comments: {comment_count}</h4>
+        </Link>
         <ul>
           <h4 className="Topics">Topic:</h4>
           <li className="TopicTitle"> {topic}</li>

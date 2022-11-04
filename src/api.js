@@ -10,3 +10,9 @@ export function patchVotes(id, voteVal) {
     return data;
   });
 }
+
+export function getComments(id) {
+  return api.get(`/articles/${id}/comments`).then((data) => {
+    return data;
+  });
+}
