@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Votes from "./Votes";
 import Comments from "./Comments";
+import AddCommentForm from "./AddCommentForm";
 
 const FocusedArticle = () => {
   const { articleId } = useParams();
@@ -13,9 +14,7 @@ const FocusedArticle = () => {
   const { body, article_id, author, created_at, title, topic } = article;
 
   useEffect(() => {
-    fetch(
-      `https://project-northcoders-nc-news.herokuapp.com/api/articles/${articleId}`
-    )
+    fetch(`https://odd-blue-foal-gown.cyclic.app/api/articles/${articleId}`)
       .then((res) => res.json())
       .then((data) => {
         const article = data;
@@ -28,12 +27,12 @@ const FocusedArticle = () => {
   return (
     <div>
       <article>
-        <li loading="lazy" className={"ArticleItems"}>
+        <li loading="lazy" className={"focusedArticle"}>
           <>{isLoading ? "Loading.." : <h2 key={article_id}>{title}</h2>}</>
           <h3 className="Author">By {author}</h3>
           <section className="BodyBackground">
             <p className="articleBody">{body}</p>
-          </section>{" "}
+          </section>
           <ul>
             <h4 className="Topics">Topic:</h4>
             <li> {topic}</li>
@@ -42,6 +41,7 @@ const FocusedArticle = () => {
           <Votes article={article} />
         </li>
       </article>
+      <AddCommentForm />
       <Comments article_id={article_id} />
     </div>
   );

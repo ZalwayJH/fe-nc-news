@@ -1,5 +1,6 @@
-import { React, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
+
 import { useParams } from "react-router-dom";
 
 const ArticleList = () => {
@@ -15,9 +16,7 @@ const ArticleList = () => {
       selectedTopic = "";
     }
 
-    fetch(
-      `https://project-northcoders-nc-news.herokuapp.com/api/articles${selectedTopic}`
-    )
+    fetch(`https://odd-blue-foal-gown.cyclic.app/api/articles${selectedTopic}`)
       .then((res) => res.json())
       .then((data) => {
         const allArticles = data;
@@ -26,14 +25,16 @@ const ArticleList = () => {
   }, [topic]);
 
   return (
-    <main>
-      <h1 className={"ArticlesHeader"}>Articles.</h1>
-      <ul>
-        {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} />;
-        })}
-      </ul>
-    </main>
+    <div>
+      <main>
+        <h1 className={"ArticlesHeader"}>Articles.</h1>
+        <ul className="allArticles">
+          {articles.map((article) => {
+            return <ArticleCard key={article.article_id} article={article} />;
+          })}
+        </ul>
+      </main>
+    </div>
   );
 };
 

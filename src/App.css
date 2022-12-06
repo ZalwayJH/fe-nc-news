@@ -1,42 +1,21 @@
 .App {
   text-align: center;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: min-content auto auto;
-  grid-template-areas:
-    "header"
-    "nav"
-    "content";
-
-  background: rgb(110, 96, 86);
-
+  background: #202020;
   /* background-image: url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80); */
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-@media only screen and (min-width: 600px) {
-  .App {
-    grid-template-columns: 25% 75%;
-    grid-template-rows: min-content auto;
-    grid-template-areas:
-      "header header"
-      "nav content";
-  }
-}
-.ArticleTitleLink {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: #161920;
+/* * {
+  background: #000 !important;
+  color: #0f0 !important;
+  outline: solid #f00 1px !important;
+} */
+.articleTitle {
+  font-family: "Outfit";
+  font-weight: 800;
+  margin: 0px;
+  color: rgb(25, 25, 25);
 }
 
 .App-header {
@@ -54,45 +33,66 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 /* .Welcome {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   color: rgb(139, 177, 226);
 } */
-
+.allArticles {
+  padding: 0px;
+  margin: auto;
+  display: inline-grid;
+  grid-column-start: 1;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-end: 1;
+}
+.ArticleTitleLink {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
 .ArticlesHeader {
   display: grid;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Outfit";
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  color: rgb(139, 177, 226);
-  grid-column-start: 2;
+  background-image: linear-gradient(
+    90deg,
+    #ff9a84 45%,
+    #a52b98 49.87%,
+    #4662aa 52.65%,
+    #198d71 56%
+  );
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   grid-column: 2;
 }
 .likeButton {
   margin: 0px;
-  position: absolute;
-  left: 85%;
-  top: 90%;
+  position: relative;
+
   background: rgba(255, 255, 255, 0);
   border: 0pt;
   font-size: larger;
 }
 .voteCounter {
-  position: relative;
-  top: 25px;
-  color: #ffccd4;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  width: 10px;
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  color: #ffc9d1;
 }
 .dislikeButton {
   margin: 0px;
@@ -104,40 +104,72 @@
   border: 0pt;
 }
 
-.ArticleItems {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(11px);
-  -webkit-backdrop-filter: blur(11px);
-  border: 1px solid rgba(11, 11, 11, 0.04);
-  color: rgb(184, 221, 224);
-  position: relative;
+.heartIcon {
+  margin: 0px;
+  padding: 0px;
+}
+.articles {
+  display: grid;
+  margin: auto;
+}
+.focusedArticle {
+  width: auto;
+  background: #949494;
+  box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
   list-style-type: none;
   list-style-position: inside;
   height: fit-content;
   border-radius: 10px;
-  margin: 10px;
-  padding: -10px;
-  width: 40%;
+  margin-right: 150px;
+  margin-left: 150px;
+}
+.ArticleItems {
+  background: #949494;
+
+  width: 300px;
+  background: #949494;
+  box-shadow: inset 0px 1px 2px rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+
+  text-decoration: none;
+  list-style-type: none;
+  list-style-position: inside;
+  margin: 16px;
 }
 
+.articleDecoration {
+  height: 3px;
+  background-image: linear-gradient(
+    90deg,
+    #ff9a84 0%,
+    #a52b98 46.87%,
+    #4662aa 78.65%,
+    #198d71 100%
+  );
+}
 .BodyBackground {
   padding: 10px;
-  background-color: #aab7bb;
+  background-color: #d9d9d9;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
 }
 
 .scrollMenu {
+  text-decoration: none;
+  margin: 0px 0px;
+  padding: 0px 0px 0px 0px;
   list-style-type: none;
   list-style-position: inside;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .scrollMenu:visited {
+  text-decoration: none;
   list-style-type: none;
   list-style-position: inside;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  color: #161920;
+  color: #a9a9a9;
 }
 
 .articleBody {
@@ -148,7 +180,7 @@
   text-overflow: ellipsis;
   white-space: wrap;
   position: relative;
-
+  text-align: left;
   width: 90%;
   color: rgb(23, 23, 23);
   border-radius: 10px;
@@ -158,18 +190,105 @@
 }
 
 .Author {
+  color: rgb(212, 233, 247);
+  font-style: normal;
   position: relative;
+  font-size: small;
   bottom: 10px;
   margin: 0;
 }
-
+.InteractArticle {
+  display: grid;
+  grid-template-columns: 0.6fr 1.9fr 0.6fr;
+  gap: 0px 0px;
+  grid-auto-flow: column;
+  margin-top: 30px;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+}
 .CommentCount {
-  margin: 0px;
-  left: 0%;
-  position: relative;
-  bottom: 50px;
+  grid-column: 1;
+  justify-content: center;
+  align-items: center;
+  color: #53aded;
+
+  text-decoration: none;
+  width: max-content;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  font-size: 28px;
+  list-style-type: none;
+  list-style-position: inside;
 }
 
+.btn {
+  grid-column: 2;
+  font-family: "Outfit";
+  padding: 5px 15px;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #ff9a84 5%, #d146c3 30%, #6484d4 99%);
+  cursor: pointer;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 14px;
+  background-color: rgb(28, 28, 28);
+  z-index: -1;
+  transition: 200ms;
+}
+
+.ViewArticleButton {
+  text-decoration: none;
+  list-style-type: none;
+  list-style-position: inside;
+  background-image: linear-gradient(
+    90deg,
+    #ff9a84 15%,
+    #d146c3 99%,
+    #6484d4 99%
+  );
+
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+.ViewArticleButton:hover {
+  background-image: linear-gradient(
+    90deg,
+    #ff9a84 15%,
+    #d146c3 40%,
+    #6484d4 99%
+  );
+  transition: 400ms;
+}
+.LikeCount {
+  grid-column: 3;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  float: right;
+  color: #d54952;
+
+  text-decoration: none;
+  width: min-content;
+  margin: 0px 0px;
+  padding: 0px 0px;
+  font-size: 35px;
+  list-style-type: none;
+  list-style-position: inside;
+}
 .Topics {
   margin: 0px;
   bottom: 8%;
@@ -185,12 +304,14 @@
 }
 
 .Date {
+  color: #282c34;
+  right: 30px;
   margin: 0px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 0;
   -webkit-box-orient: horizontal;
   text-overflow: ellipsis;
-  position: relative;
-  left: 25%;
+  justify-content: center;
+  align-items: center;
 }

@@ -6,7 +6,7 @@ const Topics = () => {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`https://project-northcoders-nc-news.herokuapp.com/api/topics`)
+    fetch(`https://odd-blue-foal-gown.cyclic.app/api/topics`)
       .then((res) => res.json())
       .then((data) => {
         const { topics } = data;
@@ -21,7 +21,7 @@ const Topics = () => {
   });
   allTopics.unshift("Home");
   return (
-    <ul>
+    <ul className="scrollMenu">
       {allTopics.map((category, index) => {
         return (
           <Link className="scrollMenu" key={index} to={`/${category}`}>

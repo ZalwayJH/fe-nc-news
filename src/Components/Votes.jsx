@@ -1,7 +1,8 @@
 import { useState } from "react";
 import React from "react";
 import * as API from "../api";
-
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { FaCommentAlt } from "react-icons/fa";
 const Votes = ({ article }) => {
   const [voteIncrement, setVotes] = useState(0);
   const { votes, article_id } = article;
@@ -26,7 +27,7 @@ const Votes = ({ article }) => {
         }}
         aria-label="like button"
       >
-        ❤️
+        <AiFillHeart className="heartIcon" />
       </button>
       <p className="voteCounter"> {votes + voteIncrement}</p>
       <button
@@ -37,7 +38,7 @@ const Votes = ({ article }) => {
         }}
         aria-label="dislike button"
       >
-        💔
+        <AiFillHeart className="heartIcon" />
       </button>
     </>
   );
