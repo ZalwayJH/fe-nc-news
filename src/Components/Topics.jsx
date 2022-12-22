@@ -19,13 +19,20 @@ const Topics = () => {
   const allTopics = selectTopics.map((item) => {
     return item.slug;
   });
-  allTopics.unshift("Home");
+
+  allTopics.unshift("");
   return (
     <ul className="scrollMenu">
       {allTopics.map((category, index) => {
         return (
-          <Link className="scrollMenu" key={index} to={`/${category}`}>
-            <li key={index}>{category}</li>
+          <Link
+            className="scrollMenu"
+            key={index}
+            to={category === "" ? "" : `?topic=${category}`}
+          >
+            <button className="topicLinks" key={index}>
+              {category === "" ? "Home" : category}
+            </button>
           </Link>
         );
       })}

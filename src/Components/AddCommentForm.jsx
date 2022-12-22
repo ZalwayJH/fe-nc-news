@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const AddCommentForm = () => {
   const [newComment, setComment] = useState("");
-  const [postedNotification, setPostedNotification] = useState("Post Comment");
+  const [postedNotification, setPostedNotification] = useState("Comment");
   const [previewComment, setPreviewComment] = useState({
     user: "",
     comment: "",
@@ -24,30 +24,28 @@ const AddCommentForm = () => {
     setPreviewComment({
       user: hardCodedUser,
       comment: newComment,
-      time: currentTime,
+      time: currentTime.slice(0, 10).split("-").reverse().join("/"),
     });
 
     API.addComment(articleId, hardCodedUser, newComment)
-      .then(({ data }) => {
-        console.log(data);
-      })
+      .then(({ data }) => {})
       .catch((err) => {
         return err.msg;
       });
 
     setComment("");
-    setPostedNotification(":) POSTED!");
+    setPostedNotification("Comment posted!");
     if (postedNotification) {
       setTimeout(resetPostedNotification, 2000);
     }
   };
 
   function resetPostedNotification() {
-    setPostedNotification("Post Comment");
+    setPostedNotification("Comment");
   }
 
   return (
-    <section className="form">
+    <section className="postCommentForm">
       <form onSubmit={handleSubmit}>
         <label htmlFor="newComment">
           <input
@@ -56,17 +54,20 @@ const AddCommentForm = () => {
             value={newComment}
             onChange={handleChange}
             required
+            className="commentTextField"
           ></input>
         </label>
-        <button type="submit">{postedNotification}</button>
+        <button className="postCommentButton" type="submit">
+          {postedNotification}
+        </button>
       </form>
       <div>
         {previewComment.time !== "" ? (
-          <div loading="lazy" className={"ArticleItems"}>
-            <h3 className="Author"> {hardCodedUser}</h3>
-            <section className="BodyBackground">
-              <p className="articleBody">{previewComment.comment}</p>
-              <p className="Date posted">{previewComment.time}</p>
+          <div loading="lazy">
+            <h3 className="focusedCommentAuthor">{hardCodedUser}</h3>
+            <section className="focusedCommentBody">
+              <p>{previewComment.comment}</p>
+              <p>Posted: {previewComment.time}</p>
             </section>
           </div>
         ) : (

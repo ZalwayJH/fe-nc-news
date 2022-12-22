@@ -2,12 +2,10 @@ import { Link } from "react-router-dom";
 import FocusedArticle from "./FocusedArticle";
 import CommentCount from "./CommentCount";
 import LikeCount from "./LikeCount";
-import Votes from "./Votes";
 
 const ArticleCard = ({ article }) => {
-  const { body, article_id, author, comment_count, created_at, title, topic } =
-    article;
-  const formattedDate = created_at.slice(0, 10);
+  const { body, article_id, comment_count, title, votes } = article;
+
   return (
     <article className="articles">
       <li loading="lazy" className={"ArticleItems"}>
@@ -25,18 +23,18 @@ const ArticleCard = ({ article }) => {
         <section className="BodyBackground">
           <p className="articleBody">{body}</p>
           <div className="InteractArticle">
-            <h4>{comment_count}</h4>
-            <button className="btn">
-              <Link
-                className="ViewArticleButton"
-                to={`/article/${article_id}`}
-                element={<FocusedArticle />}
-              >
-                View Article
-              </Link>
-            </button>
+            <Link
+              className="continueReadingText"
+              to={`/article/${article_id}`}
+              element={<FocusedArticle />}
+            >
+              View article
+            </Link>
+
             <CommentCount />
             <LikeCount />
+            <h4 className="commentsNumber">{comment_count}</h4>
+            <h4 className="likesNumber">{votes}</h4>
           </div>
         </section>
       </li>

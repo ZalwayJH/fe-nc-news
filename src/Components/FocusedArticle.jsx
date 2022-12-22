@@ -7,10 +7,8 @@ import AddCommentForm from "./AddCommentForm";
 
 const FocusedArticle = () => {
   const { articleId } = useParams();
-
   const [article, setArticleById] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const { body, article_id, author, created_at, title, topic } = article;
 
   useEffect(() => {
@@ -26,23 +24,30 @@ const FocusedArticle = () => {
 
   return (
     <div>
-      <article>
-        <li loading="lazy" className={"focusedArticle"}>
-          <>{isLoading ? "Loading.." : <h2 key={article_id}>{title}</h2>}</>
-          <h3 className="Author">By {author}</h3>
-          <section className="BodyBackground">
-            <p className="articleBody">{body}</p>
-          </section>
-          <ul>
-            <h4 className="Topics">Topic:</h4>
-            <li> {topic}</li>
-          </ul>
-          <p className="Date">{created_at}</p>
-          <Votes article={article} />
-        </li>
-      </article>
-      <AddCommentForm />
-      <Comments article_id={article_id} />
+      <>
+        {isLoading ? (
+          <h3 className="isLoading">"Loading.."</h3>
+        ) : (
+          <article className="focusedArticle">
+            <h2 className="focusedArticleTitle" key={article_id}>
+              {title}
+              <p className="Author">By {author}</p>
+            </h2>
+            <div className="articleDecoration"></div>
+            <section className="focusedBodyBackground">
+              <p className="focusedArticleBody">{body}</p>
+
+              <h4 className="focusedTopics">#{topic}</h4>
+              <Votes article={article} />
+            </section>
+            <p className="focusedDate">
+              Published {created_at.slice(0, 10).split("-").reverse().join("/")}
+            </p>
+            <AddCommentForm />
+            <Comments article_id={article_id} />
+          </article>
+        )}
+      </>
     </div>
   );
 };

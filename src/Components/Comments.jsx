@@ -18,10 +18,10 @@ const Comments = () => {
   }, [articleId]);
 
   return (
-    <section className={"ArticleItems"}>
-      <ul>
+    <section className="focusedComments">
+      <ul className="commentList">
         {isLoading ? (
-          <p> loading comments..</p>
+          <p className="isLoading"> loading comments..</p>
         ) : (
           currentComments.map((articleComments) => {
             return (
