@@ -1,40 +1,48 @@
 import { Link } from "react-router-dom";
 import FocusedArticle from "./FocusedArticle";
-import Votes from "./Votes";
+import CommentCount from "./CommentCount";
+import LikeCount from "./LikeCount";
 
 const ArticleCard = ({ article }) => {
-  const { body, article_id, author, comment_count, created_at, title, topic } =
-    article;
+  const { body, article_id, comment_count, title, votes } = article;
 
   return (
-    <article>
+    <article className="articles">
       <li loading="lazy" className={"ArticleItems"}>
         <Link
           className="ArticleTitleLink"
           to={`/article/${article_id}`}
           element={<FocusedArticle />}
         >
-          <h2 key={article_id}>{title}</h2>
+          <h2 className="articleTitle" key={article_id}>
+            {title}
+          </h2>
         </Link>
-
-        <h3 className="Author">By {author}</h3>
+        <div className="articleDecoration"></div>
+        {/* <Votes article={article} /> */}
         <section className="BodyBackground">
           <p className="articleBody">{body}</p>
+          <div className="InteractArticle">
+            <Link
+              className="continueReadingText"
+              to={`/article/${article_id}`}
+              element={<FocusedArticle />}
+            >
+              View article
+            </Link>
+
+            <CommentCount />
+            <LikeCount />
+            <h4 className="commentsNumber">{comment_count}</h4>
+            <h4 className="likesNumber">{votes}</h4>
+          </div>
         </section>
-        <Votes article={article} />
-        <Link
-          className="scrollMenu"
-          to={`/article/${article_id}`}
-          element={<FocusedArticle />}
-        >
-          <h4 className="CommentCount"> View comments: {comment_count}</h4>
-        </Link>
-        <ul>
+      </li>
+      {/* <ul>
           <h4 className="Topics">Topic:</h4>
           <li className="TopicTitle"> {topic}</li>
         </ul>
-        <p className="Date">{created_at}</p>
-      </li>
+        <p className="Date">{formattedDate}</p> */}
     </article>
   );
 };
