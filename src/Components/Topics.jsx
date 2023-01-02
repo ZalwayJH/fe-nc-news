@@ -21,22 +21,31 @@ const Topics = () => {
   });
 
   allTopics.unshift("");
+
   return (
-    <ul className="scrollMenu">
-      {allTopics.map((category, index) => {
-        return (
-          <Link
-            className="scrollMenu"
-            key={index}
-            to={category === "" ? "" : `?topic=${category}`}
-          >
-            <button className="topicLinks" key={index}>
-              {category === "" ? "Home" : category}
-            </button>
-          </Link>
-        );
-      })}
-    </ul>
+    <div className="TopicsList">
+      {isLoading ? (
+        <> </>
+      ) : (
+        <ul style={{ margin: "0px", padding: "0px" }}>
+          {allTopics.map((category, index) => {
+            return (
+              <Link
+                key={index}
+                className="menuLinks"
+                to={category === "" ? "" : `?topic=${category}`}
+              >
+                <h3 key={index}>
+                  {category === ""
+                    ? "All"
+                    : category[0].toUpperCase() + category.slice(1)}
+                </h3>
+              </Link>
+            );
+          })}
+        </ul>
+      )}
+    </div>
   );
 };
 

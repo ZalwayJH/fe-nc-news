@@ -1,7 +1,5 @@
-import { AiFillHeart } from "react-icons/ai";
-
 const CommentCard = ({ comments }) => {
-  const { comment_id, votes, created_at, body, author } = comments;
+  const { comment_id, created_at, body, author } = comments;
 
   return (
     <ul className="commentList">
@@ -11,12 +9,9 @@ const CommentCard = ({ comments }) => {
           <p key={comment_id} className="commentBody">
             {body}
           </p>
-          <div className="focusedVoteCount">
-            <AiFillHeart />
-            <p className="focusedVoteNumber">{votes}</p>
-          </div>
+          <div className="focusedVoteCount"></div>
           <p className="commentPosted">
-            posted on: {created_at.slice(0, 10).split("-").reverse().join("/")}
+            {created_at.slice(0, 10).split("-").reverse().join("/")}
           </p>
         </section>
       </li>

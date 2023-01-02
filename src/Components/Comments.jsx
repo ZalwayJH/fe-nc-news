@@ -14,7 +14,9 @@ const Comments = () => {
         setComments(data);
         setIsLoading(false);
       })
-      .catch((err) => {});
+      .catch((err) => {
+        return err;
+      });
   }, [articleId]);
 
   return (

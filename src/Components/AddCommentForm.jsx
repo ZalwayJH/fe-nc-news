@@ -48,26 +48,31 @@ const AddCommentForm = () => {
     <section className="postCommentForm">
       <form onSubmit={handleSubmit}>
         <label htmlFor="newComment">
-          <input
+          <textarea
             id="postComment"
             type="text"
             value={newComment}
             onChange={handleChange}
             required
             className="commentTextField"
-          ></input>
+            maxLength={400}
+            rows={4}
+            placeholder="Add a comment.."
+          ></textarea>
         </label>
+
         <button className="postCommentButton" type="submit">
           {postedNotification}
         </button>
+        <h4 className="numOfCharsRemaining">{400 - newComment.length}</h4>
       </form>
       <div>
         {previewComment.time !== "" ? (
           <div loading="lazy">
             <h3 className="focusedCommentAuthor">{hardCodedUser}</h3>
             <section className="focusedCommentBody">
-              <p>{previewComment.comment}</p>
-              <p>Posted: {previewComment.time}</p>
+              <p className="commentBody">{previewComment.comment}</p>
+              <p className="commentPosted">{previewComment.time}</p>
             </section>
           </div>
         ) : (

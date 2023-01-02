@@ -25,7 +25,7 @@ const ArticleList = () => {
   }, [topic, search]);
 
   return (
-    <div>
+    <div className="ArticleListContainer">
       <main>
         <>
           {isLoading ? (

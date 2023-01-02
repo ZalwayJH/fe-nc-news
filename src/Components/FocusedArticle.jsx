@@ -34,10 +34,12 @@ const FocusedArticle = () => {
               <p className="Author">By {author}</p>
             </h2>
             <div className="articleDecoration"></div>
-            <section className="focusedBodyBackground">
-              <p className="focusedArticleBody">{body}</p>
+            <p className="focusedArticleBody">
+              {body}
+              <li className="focusedTopics">#{topic}</li>
+            </p>
 
-              <h4 className="focusedTopics">#{topic}</h4>
+            <section className="focusedVotingBackground">
               <Votes article={article} />
             </section>
             <p className="focusedDate">
