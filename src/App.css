@@ -12,11 +12,6 @@ body,
 #app > div {
   height: 100%;
 }
-/* * {
-  background: #000 !important;
-  color: #0f0 !important;
-  outline: solid #f00 1px !important;
-} */
 
 .App-header {
   background-color: #282c34;
@@ -33,6 +28,7 @@ body,
 }
 
 .Welcome {
+  font-size: larger;
   margin: 0 auto;
   max-width: fit-content;
   color: rgb(255, 255, 255);
@@ -104,8 +100,8 @@ header {
 .dropdown {
   background-color: #5f6270;
   position: absolute;
-  top: 60px;
-  right: 15px;
+  top: 85px;
+  right: 20px;
   border-radius: 5px;
   width: 100px;
   padding: 1rem;
@@ -284,7 +280,7 @@ header {
   background-color: #27282b;
   border-bottom-left-radius: 14px;
   border-bottom-right-radius: 14px;
-  max-height: 190px;
+  max-height: auto;
 }
 
 .scrollMenu {
@@ -308,7 +304,7 @@ header {
 .articleBody {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   white-space: wrap;
@@ -320,6 +316,7 @@ header {
   height: auto;
   margin: 0px auto;
   font-family: "Hind", sans-serif;
+  font-size: large;
 }
 
 .InteractArticle {
@@ -377,6 +374,8 @@ header {
   padding: 2px 2px 2px 2px;
   border: none;
   width: 110px;
+  position: relative;
+  bottom: 10px;
 }
 
 /* 
@@ -685,7 +684,7 @@ header {
   margin-bottom: 0px;
   height: auto;
   font-family: Arial, Helvetica, sans-serif;
-  max-width: 880px;
+  max-width: 900px;
   box-sizing: border-box;
   resize: none;
 }
@@ -743,7 +742,12 @@ header {
 }
 
 .isLoading {
+  color: white;
   height: 100vh;
+}
+
+.isLoadingTopics {
+  color: white;
 }
 .SortByDropDown {
   display: block;

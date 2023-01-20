@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { React, useState, useEffect } from "react";
 
 const Topics = () => {
-  const [selectTopics, setTopics] = useState([]);
+  const [selectTopics, setTopics] = useState([""]);
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -10,7 +10,6 @@ const Topics = () => {
       .then((res) => res.json())
       .then((data) => {
         const { topics } = data;
-
         setTopics(topics);
         setLoading(false);
       });
@@ -25,7 +24,7 @@ const Topics = () => {
   return (
     <div className="TopicsList">
       {isLoading ? (
-        <> </>
+        <h6 className="isLoadingTopics">Loading Topics</h6>
       ) : (
         <ul style={{ margin: "0px", padding: "0px" }}>
           {allTopics.map((category, index) => {

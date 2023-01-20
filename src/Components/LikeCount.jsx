@@ -1,5 +1,5 @@
 import React from "react";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart } from "react-icons/ai";
 
 const LikeCount = () => {
   return <AiFillHeart className="LikeCount" />;

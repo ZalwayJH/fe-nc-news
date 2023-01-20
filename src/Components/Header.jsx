@@ -1,5 +1,12 @@
+import { useScreenSize } from "../Components/hooks/useScreenSize";
+
 const Header = () => {
-  return <header className={"Welcome"}>Welcome to NC News!</header>;
+  const { isMobile } = useScreenSize();
+  return (
+    <header className="welcome">
+      Welcome to {isMobile ? "Mobile" : "Desktop"} NC News
+    </header>
+  );
 };
 
 export default Header;

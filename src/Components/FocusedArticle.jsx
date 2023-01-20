@@ -26,7 +26,7 @@ const FocusedArticle = () => {
     <div>
       <>
         {isLoading ? (
-          <h3 className="isLoading">"Loading.."</h3>
+          <h3 className="isLoading">Loading..</h3>
         ) : (
           <article className="focusedArticle">
             <h2 className="focusedArticleTitle" key={article_id}>

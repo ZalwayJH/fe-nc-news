@@ -34,14 +34,20 @@ const AddCommentForm = () => {
       });
 
     setComment("");
-    setPostedNotification("Comment posted!");
+    setPostedNotification("Posted");
     if (postedNotification) {
+      document.getElementById("postCommentButton").style.backgroundColor =
+        "#44c088";
+      document.getElementById("postCommentButton").style.color = "black";
       setTimeout(resetPostedNotification, 2000);
     }
   };
 
   function resetPostedNotification() {
     setPostedNotification("Comment");
+    document.getElementById("postCommentButton").style.backgroundColor =
+      "#373c47";
+    document.getElementById("postCommentButton").style.color = "white";
   }
 
   return (
@@ -61,7 +67,11 @@ const AddCommentForm = () => {
           ></textarea>
         </label>
 
-        <button className="postCommentButton" type="submit">
+        <button
+          id="postCommentButton"
+          className="postCommentButton"
+          type="submit"
+        >
           {postedNotification}
         </button>
         <h4 className="numOfCharsRemaining">{400 - newComment.length}</h4>
