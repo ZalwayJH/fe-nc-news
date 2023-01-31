@@ -18,6 +18,7 @@ const AddCommentForm = () => {
     event.preventDefault();
     setComment(event.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setComment(event.target.value);
@@ -54,7 +55,7 @@ const AddCommentForm = () => {
     <section className="postCommentForm">
       <form onSubmit={handleSubmit}>
         <label htmlFor="newComment">
-          <textarea
+          <input
             id="postComment"
             type="text"
             value={newComment}
@@ -63,14 +64,14 @@ const AddCommentForm = () => {
             className="commentTextField"
             maxLength={400}
             rows={4}
-            placeholder="Add a comment.."
-          ></textarea>
+            placeholder="Add a comment"
+          ></input>
         </label>
 
         <button
           id="postCommentButton"
-          className="postCommentButton"
           type="submit"
+          className="postCommentButton"
         >
           {postedNotification}
         </button>

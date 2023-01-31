@@ -1,24 +1,40 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 
-function SortBy() {
-  const sortingQuery = ["article_id", "created_at", "comment_count", "votes"];
-  const sortList = ["Article Id", "Most recent", "Most comments", "Most Votes"];
+function SortBy({ currentSort }) {
+  const nav = useNavigate();
+
+  const options = [
+    { value: "created_at", label: "Most recent" },
+    { value: "article_id", label: "Article Id" },
+    { value: "comment_count", label: "Most comments" },
+    { value: "votes", label: "Most Votes" },
+  ];
+
+  function handleChange(event) {
+    if (event.value === "") {
+      nav("");
+    } else {
+      nav(`?sort_by=${event.value}`);
+    }
+  }
+
+  const placeholder = options.map((item) =>
+    item.value === currentSort ? item.label : null
+  );
 
   return (
-    <div>
-      <div>
-        <ul style={{ margin: "0px", padding: "0px" }}>
-          {sortingQuery.map((query, index) => {
-            return (
-              <Link className="menuLinks" key={index} to={`?sort_by=${query}`}>
-                <h3 key={index}>{sortList[index]}</h3>
-              </Link>
-            );
-          })}
-        </ul>
-      </div>
-    </div>
+    <Select
+      value={currentSort}
+      className="sortSelector"
+      options={options}
+      onChange={handleChange}
+      placeholder={placeholder}
+      autoFocus={true}
+      aria-selected={true}
+      isSearchable={false}
+    />
   );
 }
 

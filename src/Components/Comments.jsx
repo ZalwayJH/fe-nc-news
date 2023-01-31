@@ -23,7 +23,9 @@ const Comments = () => {
     <section className="focusedComments">
       <ul className="commentList">
         {isLoading ? (
-          <p className="isLoading"> loading comments..</p>
+          <h3 className="isLoading">
+            <div className="loader"></div>
+          </h3>
         ) : (
           currentComments.map((articleComments) => {
             return (

@@ -1,25 +1,42 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import FocusedArticle from "./FocusedArticle";
 import CommentCount from "./CommentCount";
 import LikeCount from "./LikeCount";
 
 const ArticleCard = ({ article }) => {
+  const [padding, setPadding] = useState(0);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    container.style.overflow = "hidden";
+    const textHeight = container.scrollHeight;
+
+    if (textHeight < 76) {
+      setPadding((76 - textHeight) / 2);
+    }
+
+    container.style.overflow = "";
+  }, []);
   const { body, article_id, comment_count, title, votes } = article;
 
   return (
     <article className="articles">
-      <li loading="lazy" className={"ArticleItems"}>
+      <li loading="lazy" className="ArticleItems">
         <Link
           className="ArticleTitleLink"
           to={`/article/${article_id}`}
           element={<FocusedArticle />}
         >
-          <h2 className="articleTitle" key={article_id}>
+          <h2
+            className="articleTitle"
+            ref={containerRef}
+            style={{ paddingTop: padding, paddingBottom: padding }}
+          >
             {title}
           </h2>
         </Link>
-        <div className="articleDecoration"></div>
-        {/* <Votes article={article} /> */}
         <section className="BodyBackground">
           <p className="articleBody">{body}</p>
           <div className="InteractArticle">
@@ -38,11 +55,6 @@ const ArticleCard = ({ article }) => {
           </div>
         </section>
       </li>
-      {/* <ul>
-          <h4 className="Topics">Topic:</h4>
-          <li className="TopicTitle"> {topic}</li>
-        </ul>
-        <p className="Date">{formattedDate}</p> */}
     </article>
   );
 };

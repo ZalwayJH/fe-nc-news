@@ -1,50 +1,56 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { React, useState, useEffect } from "react";
+import * as API from "../api";
+import Select from "react-select";
 
-const Topics = () => {
-  const [selectTopics, setTopics] = useState([""]);
+const Topics = ({ currentTopic }) => {
   const [isLoading, setLoading] = useState(true);
+  const [options, setOptions] = useState([]);
+
+  const nav = useNavigate();
+
+  function handleChange(event) {
+    if (event.value === "") {
+      nav("");
+    } else {
+      nav(`?topic=${event.value}`);
+    }
+  }
 
   useEffect(() => {
-    fetch(`https://odd-blue-foal-gown.cyclic.app/api/topics`)
-      .then((res) => res.json())
-      .then((data) => {
+    API.getTopics()
+      .then(({ data }) => {
         const { topics } = data;
-        setTopics(topics);
         setLoading(false);
+        if (data) {
+          const newOptions = topics.map((item) => {
+            return {
+              value: item.slug,
+              label: item.slug[0].toUpperCase() + item.slug.slice(1),
+            };
+          });
+          newOptions.unshift({ value: "", label: "All" });
+          setOptions(newOptions);
+        }
+      })
+      .catch((err) => {
+        throw err;
       });
   }, [isLoading]);
 
-  const allTopics = selectTopics.map((item) => {
-    return item.slug;
-  });
-
-  allTopics.unshift("");
-
   return (
-    <div className="TopicsList">
-      {isLoading ? (
-        <h6 className="isLoadingTopics">Loading Topics</h6>
-      ) : (
-        <ul style={{ margin: "0px", padding: "0px" }}>
-          {allTopics.map((category, index) => {
-            return (
-              <Link
-                key={index}
-                className="menuLinks"
-                to={category === "" ? "" : `?topic=${category}`}
-              >
-                <h3 key={index}>
-                  {category === ""
-                    ? "All"
-                    : category[0].toUpperCase() + category.slice(1)}
-                </h3>
-              </Link>
-            );
-          })}
-        </ul>
-      )}
-    </div>
+    <Select
+      value={currentTopic}
+      className="topicSelector"
+      isLoading={isLoading}
+      options={options}
+      onChange={handleChange}
+      placeholder={currentTopic}
+      noOptionsMessage={({ inputValue }) =>
+        !inputValue ? "" : "No results for that topic found"
+      }
+      aria-selected={true}
+    />
   );
 };
 

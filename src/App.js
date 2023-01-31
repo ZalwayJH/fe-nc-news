@@ -4,6 +4,7 @@ import ArticleList from "./Components/ArticleList";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import FocusedArticle from "./Components/FocusedArticle";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<ArticleList />} />
           <Route path="/article/:articleId" element={<FocusedArticle />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

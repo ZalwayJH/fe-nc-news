@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import ArticleCard from "./ArticleCard";
-
-import { useParams, useLocation } from "react-router-dom";
+import * as API from "../api";
+import { useLocation } from "react-router-dom";
 
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
-  const { topic } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
   const { search } = useLocation();
 
   useEffect(() => {
@@ -14,22 +14,38 @@ const ArticleList = () => {
     if (search === "?topic=") {
       searchQuery = "";
     }
-
-    fetch(`https://odd-blue-foal-gown.cyclic.app/api/articles${searchQuery}`)
-      .then((res) => res.json())
-      .then((data) => {
+    setIsLoading(true);
+    API.getAllArticles(searchQuery)
+      .then(({ data }) => {
         const allArticles = data;
         setArticles(allArticles);
         setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
       });
-  }, [topic, search]);
+  }, [search]);
 
   return (
     <div className="ArticleListContainer">
       <main>
         <>
-          {isLoading ? (
-            <h3 className="isLoading">Loading articles..</h3>
+          {error ? (
+            search[1] === "t" ? (
+              <h3 className="isLoading">{`${error} - No results for topic "${search.slice(
+                7
+              )}"`}</h3>
+            ) : search[1] === "s" ? (
+              <h3 className="isLoading">{`${error} - Cannot sort by "${search.slice(
+                9
+              )}"`}</h3>
+            ) : (
+              setError("")
+            )
+          ) : isLoading ? (
+            <h3 className="isLoading">
+              <div className="loader"></div>
+            </h3>
           ) : (
             <ul className="allArticles">
               {articles.map((article) => {

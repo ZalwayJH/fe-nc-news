@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import * as API from "../api";
 import Votes from "./Votes";
 import Comments from "./Comments";
 import AddCommentForm from "./AddCommentForm";
@@ -12,21 +13,21 @@ const FocusedArticle = () => {
   const { body, article_id, author, created_at, title, topic } = article;
 
   useEffect(() => {
-    fetch(`https://odd-blue-foal-gown.cyclic.app/api/articles/${articleId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const article = data;
-
-        setArticleById(article);
-        setIsLoading(false);
-      });
+    window.scrollTo(0, 0);
+    API.getArticleById(articleId).then(({ data }) => {
+      const article = data;
+      setArticleById(article);
+      setIsLoading(false);
+    });
   }, [articleId]);
 
   return (
     <div>
       <>
         {isLoading ? (
-          <h3 className="isLoading">Loading..</h3>
+          <h3 className="isLoading">
+            <div className="loader"></div>
+          </h3>
         ) : (
           <article className="focusedArticle">
             <h2 className="focusedArticleTitle" key={article_id}>

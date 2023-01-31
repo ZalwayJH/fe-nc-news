@@ -1,37 +1,45 @@
-import React, { useState } from "react";
-import { IoMenu } from "react-icons/io5";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import DropDown from "./DropDown";
 import { useLocation } from "react-router-dom";
+import Topics from "./Topics";
+import SortBy from "./SortBy";
 
 import Header from "./Header";
 
 function NavBar() {
-  const [menu, setMenu] = useState(false);
-  const { pathname } = useLocation();
   const { search } = useLocation();
+  const [currentTopic, setCurrentTopic] = useState("");
+  const [currentSort, setCurrentSort] = useState("");
+  const topic = search.slice(7);
+  const sort = search.slice(9);
 
-  const selectedTopic = search.split("?topic=");
+  useEffect(() => {
+    if (search.slice(0, 7) === "?topic=") {
+      setCurrentTopic(topic[0].toUpperCase() + topic.slice(1));
+      setCurrentSort("created_at");
+    }
+    if (topic === "" || search.slice(0, 9) === "?sort_by=") {
+      setCurrentTopic("All");
+    }
+    if (search.slice(0, 9) === "?sort_by=") {
+      setCurrentSort(sort);
+    }
+
+    if (sort === "") {
+      setCurrentSort("created_at");
+    }
+  }, [topic, sort, search]);
 
   return (
-    <nav className="NavBar">
-      <Header />
-      <ul className="NavBarList">
+    <div>
+      <nav className="NavBar">
         <Link className="HomeLink" to="">
-          <h1 className="ArticlesHeader">
-            {selectedTopic[1] ? selectedTopic[1] : "All"}
-          </h1>
+          <Header />
         </Link>
-        {pathname !== "/" ? (
-          <></>
-        ) : (
-          <div>
-            <IoMenu className="MenuButton" onClick={() => setMenu(!menu)} />
-            {menu ? <DropDown /> : <></>}
-          </div>
-        )}
-      </ul>
-    </nav>
+        <Topics currentTopic={currentTopic} />
+        <SortBy currentSort={currentSort} />
+      </nav>
+    </div>
   );
 }
 
