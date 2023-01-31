@@ -39,7 +39,8 @@ This front-end, hosted by Netlify, requests data from the backend, a REST API cr
 - [React Router](https://reactrouter.com/en/main)
 - [React-Select](https://react-select.com/home)
 
-###Installation
+### Installation
+
 Firstly, make sure you have Node.js installed.
 
 Clone this repository on your local machine
